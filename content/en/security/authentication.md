@@ -86,8 +86,7 @@ in `config/auth.php` make sure to set:
 ...
 
 'auth' => [
-    'disabled' => false,
-
+    'disabled' => false
     ...
 ],
 ```
@@ -98,7 +97,7 @@ in `config/auth.php` make sure to set:
 {
   login(
     email: "amirmasoud@pepper.test"
-    password: "12345678"
+    password: "123456789"
   ) {
     token
   }
@@ -161,8 +160,8 @@ mutation {
   register(
     name: "amirmasoud"
     email: "amirmasoud@pepper.test"
-    password: "12345678"
-    password_confirmation: "12345678"
+    password: "123456789"
+    password_confirmation: "123456789"
   ) {
     token
   }
