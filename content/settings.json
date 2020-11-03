@@ -1,0 +1,10 @@
+{
+  "title": "Coleus Docs",
+  "url": "https://github.com/pepperlabs/docs",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
+  "github": "pepperlabs/docs",
+  "twitter": "@AmirmasoudShey1"
+}
