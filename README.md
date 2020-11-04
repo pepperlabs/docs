@@ -1,5 +1,7 @@
 # coleus-docs
 
+Online version [https://pepperlabs.github.io/docs/](https://pepperlabs.github.io/docs/)
+
 ## Setup
 
 Install dependencies:
