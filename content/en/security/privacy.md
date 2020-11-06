@@ -7,7 +7,7 @@ category: Security
 
 ## Override Method
 
-You can define privacy for individual fields as follow, `set[FieldName]Privacy` in Pepper class for each model:
+By overriding a method with `set[FieldName]Privacy` format in your Pepper class, you can define custom privacy for each field:
 
 ```php
 public function setEmailPrivacy($args)
