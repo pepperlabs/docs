@@ -7,6 +7,11 @@ category: Security
 
 ## Enable Auth
 
+1. set `pepper.auth.disabled` to `false` in order to enable authentication.
+2. There should be a pepper class correspond to your defined user model. for
+example if you have defined `App\Models\User::class` as your user model, you
+must have `App\Pepper\User::class` class.
+
 Authentication is done using JWT utilizing [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth) package.
 
 1. update `.env` file to include `JWT_SECRET` secret ([learn more](https://jwt-auth.readthedocs.io/en/develop/laravel-installation/)):
@@ -85,4 +90,202 @@ in `config/auth.php` make sure to set:
 
     ...
 ],
+```
+
+## Login
+
+```graphql
+{
+  login(
+    email: "amirmasoud@pepper.test"
+    password: "12345678"
+  ) {
+    token
+  }
+}
+```
+
+return response would be JWT token if login credentials are valid, otherwise it would be authorization error.
+
+### Override login args
+
+Add new method called `setLoginArgs` to the defined `User::class` class:
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+use GraphQL\Type\Definition\Type;
+
+class User extends GraphQL
+{
+    public function setLoginArgs(): array
+    {
+        return [
+            'email' => ['name' => 'email', 'type' => Type::string()],
+            'password' => ['name' => 'password', 'type' => Type::string()],
+            'other_field' => ['other_field' => 'name', 'type' => Type::string()],
+        ];
+    }
+}
+```
+
+### Set username for login
+
+The default args for login are `email` and `password`, however, you can change
+username by defining a method called `setLoginUsernameField` in your pepper
+class which corresponds to `User::class` class:
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+
+class User extends GraphQL
+{
+    public function setLoginUsernameField(): string
+    {
+        return 'username';
+    }
+}
+```
+
+## Register
+
+```graphql
+mutation {
+  register(
+    name: "amirmasoud"
+    email: "amirmasoud@pepper.test"
+    password: "12345678"
+    password_confirmation: "12345678"
+  ) {
+    token
+  }
+}
+```
+
+Return response would be JWT token if no authorization error had been raised.
+
+### Override Register Args
+
+Add `setRegisterArgs` method in Pepper `User` class:
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+use GraphQL\Type\Definition\Type;
+
+class User extends GraphQL
+{
+    public function setRegisterArgs(): string
+    {
+        return [
+            'name' => ['name' => 'name', 'type' => Type::string()],
+            'email' => ['name' => 'email', 'type' => Type::string()],
+            'password' => ['name' => 'password', 'type' => Type::string()],
+            'password_confirmation' => ['name' => 'password_confirmation', 'type' => Type::string()],
+        ];
+    }
+}
+```
+
+### Override Resolve Method
+
+Add `setRegisterResolve` method in Pepper `User` class. `$args` and `$user` arguments
+are available. the return of this method should be user class instance.
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+use Illuminate\Support\Facades\Hash;
+
+class User extends GraphQL
+{
+    public function setRegisterResolve($args, $user)
+    {
+        return $user::create([
+            'name' => $args['name'],
+            'email' => $args['email'],
+            'password' => Hash::make($args['password']),
+        ]);
+    }
+}
+```
+
+### Override Authorize Method
+
+Add `setRegisterAuthorize` method in Pepper `User` class. the return of this
+method must be boolean.
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+
+class User extends GraphQL
+{
+    public static function setRegisterAuthorize($root, $args, $ctx, $resolveInfo, $getSelectFields)
+    {
+        return true;
+    }
+}
+```
+
+### Override Authorization Message
+
+Add `setRegisterAuthorizationMessage` method in Pepper `User` class. the return
+of this method must be string.
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+
+class User extends GraphQL
+{
+    public static function setRegisterAuthorizationMessage()
+    {
+        return 'Validation error';
+    }
+}
+```
+
+### Override Rules
+
+Add `setRegisterRules` method in Pepper `User` class. the return of this method
+must be array.
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+
+class User extends GraphQL
+{
+    public static function setRegisterRules()
+    {
+        return [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed'],
+        ];
+    }
+}
 ```
