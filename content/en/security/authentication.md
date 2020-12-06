@@ -97,11 +97,7 @@ in `config/auth.php` make sure to set:
 {
   login(
     email: "amirmasoud@pepper.test"
-<<<<<<< HEAD
     password: "123456789"
-=======
-    password: "12345678"
->>>>>>> 0118e953eb486964d980848193b3ab591e4066f0
   ) {
     token
   }
