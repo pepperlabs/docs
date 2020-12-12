@@ -33,3 +33,37 @@ public function setQueryDescription()
     return 'new desription';
 }
 ```
+
+## Add Optional Fields
+
+You can add optional fields or override a field completely, by defining `setOptionalFields` method in your Pepper class for corresponding model in your application. An exampel could be something like below:
+
+
+```php
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+use GraphQL\Type\Definition\Type;
+
+class Post extends GraphQL
+{
+    public function setOptionalFields()
+    {
+        return [
+            'cover_url' => [
+                'type' => Type::string(),
+                'selectable' => false,
+                'resolve' => function ($root) {
+                    $root->refresh();
+                    return $root->cover;
+                }
+            ]
+        ];
+    }
+}
+
+```
+
+In this example, we have defined a new `cover_url` property that return the cover value as a string.
