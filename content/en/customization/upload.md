@@ -5,6 +5,8 @@ position: 12
 category: Customization
 ---
 
+## Upload a file
+
 For enabling uploading for a field type you need to proceed two steps one in the
 Pepper class and one in the model class:
 
@@ -42,6 +44,8 @@ class Post extends GraphQL
 }
 ```
 
+Please take note that at this moment you cannot use `Upload` field both as a input type and return type and they should be different fields. as we have two fields, one for uploading actual file and one for getting the path to uploaded file.
+
 2. Add attribute mutation to your model to customize uploading behavior. most
 basic form of upload functionality is provided below:
 
@@ -64,6 +68,8 @@ class Post extends Model
     }
 }
 ```
+
+### Test Query
 
 Test the upload mutation:
 
