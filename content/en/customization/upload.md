@@ -17,13 +17,27 @@ namespace App\Http\Pepper;
 
 use Pepper\GraphQL;
 use Rebing\GraphQL\Support\Facades\GraphQL as ParentGraphQL;
+use GraphQL\Type\Definition\Type;
 
 class Post extends GraphQL
 {
     public function setCoverType()
     {
-        // Field cover has Upload type now.
         return ParentGraphQL::type('Upload');
+    }
+
+    public function setOptionalFields()
+    {
+        return [
+            'cover_url' => [
+                'type' => Type::string(),
+                'selectable' => false,
+                'resolve' => function ($root) {
+                    $root->refresh();
+                    return $root->cover;
+                }
+            ]
+        ];
     }
 }
 ```
