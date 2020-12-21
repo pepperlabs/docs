@@ -17,9 +17,9 @@ Pepper is an automatic GraphQL exposing Laravel package. It uses your applicatio
 
 ## Version support
 
-PHP: 7.1.3 or higher
+PHP: 7.3 or higher
 
-Laravel: 5.6 or higher
+Laravel: 7 or higher
 
 ## Background
 
