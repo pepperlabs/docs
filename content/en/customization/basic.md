@@ -36,7 +36,7 @@ public function setQueryDescription()
 
 ## Add Optional Fields
 
-You can add optional fields or override a field completely, by defining `setOptionalFields` method in your Pepper class for corresponding model in your application. An exampel could be something like below:
+You can add optional fields or override a field completely by defining `setOptionalFields` method in your Pepper class for a corresponding model in your application. An example could be something like below:
 
 
 ```php
@@ -66,4 +66,4 @@ class Post extends GraphQL
 
 ```
 
-In this example, we have defined a new `cover_url` property that return the cover value as a string.
+In this example, we have defined a new `cover_url` property that returns the cover value as a string.
