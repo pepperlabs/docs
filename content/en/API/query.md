@@ -33,7 +33,7 @@ query {
 
 Return one model object (if found any) using defined PK defined for model using
 [`getKeyName`](https://laravel.com/api/5.8/Illuminate/Database/Eloquent/Model.html#method_getKeyName) which gets `primaryKey` property on the model. It's
-usually `id`. Input argument is also limited to this key.
+usually `id`. The input argument is also limited to this key.
 
 ```graphql
 query [<op-name>] {
@@ -162,7 +162,7 @@ query {
 
 ### _and
 
-Queries are executed with `and` operator by default.
+Queries are executed with the `and` operator by default.
 
 Example:
 
