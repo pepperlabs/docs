@@ -17,3 +17,15 @@ public function setEmailPrivacy($args)
     return false;
 }
 ```
+
+Another example:
+
+```php
+use Illuminate\Support\Facades\Auth;
+
+public function setBalancePrivacy($args)
+{
+    // Include balance property if the user is authenticated.
+    return Auth::check();
+}
+```
