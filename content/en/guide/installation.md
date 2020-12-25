@@ -17,11 +17,10 @@ Initial the base GraphQL classes:
 php artisan pepper:grind --all
 ```
 
-Add `pepper` middleware to graphql config file.
+Add `pepper` middleware to the GraphQL config file.
 
-Out of the box any models selected would be available at the graphql endpoint.
-however you should make sure that you have defined the return type of your
-relations in your models in order to make the relations work on the fly.
+Out of the box, any models selected would be available at the GraphQL endpoint.
+However, you should make sure that you have defined the return type of your relations in your models in order to make the relations work on the fly.
 An example model would look like this:
 
 ```php
@@ -56,4 +55,4 @@ By enabling caching you can improve execution time:
 
 ## Supported databases
 
-As it uses Laravel Eloquent only, it would support SQLite, MySQL, PostgreSQL and, SQLServer.
+As it uses Laravel Eloquent only, it would support SQLite, MySQL, PostgreSQL, and SQLServer.
