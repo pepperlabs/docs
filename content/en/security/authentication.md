@@ -7,10 +7,8 @@ category: Security
 
 ## Enable Auth
 
-1. set `pepper.auth.disabled` to `false` in order to enable authentication.
-2. There should be a pepper class correspond to your defined user model. for
-example if you have defined `App\Models\User::class` as your user model, you
-must have `App\Pepper\User::class` class.
+1. set `pepper.auth.disabled` to `false` to enable authentication.
+2. There should be a pepper class correspond to your defined user model. for example, if you have specified `App\Models\User::class` as your user model, you must have `App\Pepper\User::class` class.
 
 Authentication is done using JWT utilizing [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth) package.
 
@@ -104,7 +102,7 @@ in `config/auth.php` make sure to set:
 }
 ```
 
-return response would be JWT token if login credentials are valid, otherwise it would be authorization error.
+Return response would be JWT token if login credentials are valid; otherwise, it would be an authorization error.
 
 ### Override login args
 
@@ -133,9 +131,7 @@ class User extends GraphQL
 
 ### Set username for login
 
-The default args for login are `email` and `password`, however, you can change
-username by defining a method called `setLoginUsernameField` in your pepper
-class which corresponds to `User::class` class:
+The default args for login are `email` and `password`; however, you can change username by defining a method called `setLoginUsernameField` in your pepper class, which corresponds to `User::class` class:
 
 ```php
 <?php
@@ -168,7 +164,7 @@ mutation {
 }
 ```
 
-Return response would be JWT token if no authorization error had been raised.
+Return response would be JWT token if no authorization error were raised.
 
 ### Override Register Args
 
@@ -199,7 +195,7 @@ class User extends GraphQL
 ### Override Resolve Method
 
 Add `setRegisterResolve` method in Pepper `User` class. `$args` and `$user` arguments
-are available. the return of this method should be user class instance.
+are available. The return of this method should be a user class instance.
 
 ```php
 <?php
@@ -224,8 +220,7 @@ class User extends GraphQL
 
 ### Override Authorize Method
 
-Add `setRegisterAuthorize` method in Pepper `User` class. the return of this
-method must be boolean.
+Add `setRegisterAuthorize` method in Pepper `User` class. the return of this method must be boolean.
 
 ```php
 <?php
@@ -245,8 +240,7 @@ class User extends GraphQL
 
 ### Override Authorization Message
 
-Add `setRegisterAuthorizationMessage` method in Pepper `User` class. the return
-of this method must be string.
+Add `setRegisterAuthorizationMessage` method in Pepper `User` class. the return of this method must be a string.
 
 ```php
 <?php
@@ -266,8 +260,7 @@ class User extends GraphQL
 
 ### Override Rules
 
-Add `setRegisterRules` method in Pepper `User` class. the return of this method
-must be array.
+Add `setRegisterRules` method in Pepper `User` class. the return of this method must be an array.
 
 ```php
 <?php
