@@ -7,10 +7,14 @@ category: Guide
 
 ### Generate Pepper GraphQL classes
 
-Run following command to generate Pepper GraphQL class for interactively:
+Run the following command to generate Pepper GraphQL class interactively:
 
 ```bash
 php artisan pepper:grind
 ```
 
-or supply `--all` option to generate for all models.
+Or supply `--all` option to generate for all models:
+
+```bash
+php artisan pepper:grind --all
+```
