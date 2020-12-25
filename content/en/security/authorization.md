@@ -32,7 +32,7 @@ Available operations are:
 
 ## Override Message
 
-For defining authorization message for each exposed GraphQL queries and mutation add a method of `set[NameOfOperation]AuthorizationMessage` to its repective Pepper class, the return must should be string:
+For defining authorization message for each exposed GraphQL queries and mutation, add a method of `set[NameOfOperation]AuthorizationMessage` to its respective Pepper class. The return must be a string:
 
 ```php
 public function setQueryAuthorizationMessage()
