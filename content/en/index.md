@@ -11,7 +11,7 @@ features:
 
 ## About Pepper
 
-Pepper is an automatic GraphQL exposing Laravel package. It uses your application defined models to auto define properties and relations. It supports Query and Mutation out of the box. Pepper offers features such as:
+Pepper is an automatic GraphQL exposing Laravel package. It uses your application models to auto define properties and relations. It supports Queries and Mutations out of the box. Pepper offers features such as:
 
 <list :items="features"></list>
 
