@@ -9,7 +9,7 @@ category: Customization
 
 You can define a list of covered fields for your model GraphQL endpoint. It will expose everything except those which are defined to be covered:
 
-```graphql
+```php
 <?php
 
 namespace App\Http\Pepper;
@@ -28,7 +28,7 @@ class User extends GraphQL
 
 You can define a list of exposed fields for your model GraphQL endpoint. It will not allow any other field to be exposed except those which are defined:
 
-```graphql
+```php
 <?php
 
 namespace App\Http\Pepper;
