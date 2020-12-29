@@ -5,6 +5,27 @@ position: 10
 category: Customization
 ---
 
+## Exposed fields
+
+You can define a list of exposed fields for your model GraphQL endpoint. It will not allow any other field to be exposed except those which are defined:
+
+```graphql
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+
+class User extends GraphQL
+{
+    protected $exposed = [
+        'id',
+        'name',
+        'email',
+    ];
+}
+```
+
 ## Override `description`
 
 Create a new method called `set[operation]Description` and return a string to override description. available `operations` are:
