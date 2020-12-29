@@ -5,6 +5,25 @@ position: 10
 category: Customization
 ---
 
+## Covered fields
+
+You can define a list of covered fields for your model GraphQL endpoint. It will expose everything except those which are defined to be covered:
+
+```graphql
+<?php
+
+namespace App\Http\Pepper;
+
+use Pepper\GraphQL;
+
+class User extends GraphQL
+{
+    protected $covered = [
+        'password',
+    ];
+}
+```
+
 ## Exposed fields
 
 You can define a list of exposed fields for your model GraphQL endpoint. It will not allow any other field to be exposed except those which are defined:
