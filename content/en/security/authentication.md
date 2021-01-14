@@ -294,7 +294,7 @@ mutation {
 }
 ```
 
-You can customize the redirect link a user would ultimately recevice via a channel such as email, by setting the `pepper.auth.frontend_url` and also can make further customization to the url by chaning the default value of the `pepper.auth.password_reset` value. A default reset link would look likes as `[defined_FRONTEND_URL_or_fallback_to_APP_URL]/[config_value_of_pepper_auth_password_auth]/?email=EMAIL&token=TOKEN` the query strings of `email` and `token` are filled automatically. A success message would look likes below:
+You can customize the redirect link a user would ultimately recevice via a channel such as email, by setting the `pepper.auth.frontend_url` and also can make further customization to the url by chaning the default value of the `pepper.auth.password_reset` value. A default reset link would look likes as `[defined_FRONTEND_URL_or_fallback_to_APP_URL]/[config_value_of_pepper_auth_password_reset]/?email=EMAIL&token=TOKEN` the query strings of `email` and `token` are filled automatically. A success message would look likes below:
 
 ```json
 {
