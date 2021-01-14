@@ -281,3 +281,55 @@ class User extends GraphQL
     }
 }
 ```
+
+## Forgot Password
+
+Bt passing a registered user's email to the following GraphQL mutation you can send reset link to the user:
+
+```graphql
+mutation {
+  forgot_password(email: "username@pepper.fake") {
+    status
+  }
+}
+```
+
+You can customize the redirect link a user would ultimately recevice via a channel such as email, by setting the `pepper.auth.frontend_url` and also can make further customization to the url by chaning the default value of the `pepper.auth.password_reset` value. A default reset link would look likes as `[defined_FRONTEND_URL_or_fallback_to_APP_URL]/[config_value_of_pepper_auth_password_auth]/?email=EMAIL&token=TOKEN` the query strings of `email` and `token` are filled automatically. A success message would look likes below:
+
+```json
+{
+  "data": {
+    "forgot_password": {
+      "status": "We have emailed your password reset link!"
+    }
+  }
+}
+```
+
+Or you might run into a error like below, which should be handles accordingly in your front-end application:
+
+```json
+{
+  "errors": [
+    {
+      "message": "We can't find a user with that email address.",
+      "extensions": {
+        "category": "graphql"
+      },
+      "locations": [
+        {
+          "line": 2,
+          "column": 3
+        }
+      ],
+      "path": [
+        "forgot_password"
+      ]
+    }
+  ],
+  "data": {
+    "forgot_password": null
+  }
+}
+```
+
