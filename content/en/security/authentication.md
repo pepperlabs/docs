@@ -333,3 +333,29 @@ Or you might run into a error like below, which should be handles accordingly in
 }
 ```
 
+## Reset Password
+
+After requesting forgot password mutation you can invoke following GraphQL mutation to reset a user's password. It requires that you have properly handled `frontend_url` and `password_reset` in Pepper configuration.
+
+```graphql
+mutation {
+  reset_password(
+    email: "amirmasoud@pepper.fake",
+    token: "token_from_sent_email_in_forgot_password",
+    password: "new_secret",
+    password_confirmation: "new_secret"
+  )
+}
+```
+
+A success reset password can look like below:
+
+```json
+{
+  "data": {
+    "forgot_password": {
+      "status": "success localized reset password message."
+    }
+  }
+}
+```
