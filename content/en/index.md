@@ -47,6 +47,7 @@ Pepper is thankful to all the contributors to the following packages and applica
 * Automatic result cache
 * ReactAdmin support
 * Route hashing
+* Compatibility with Laravel Octane
 
 ## Security Vulnerabilities
 
