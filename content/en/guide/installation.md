@@ -17,7 +17,16 @@ Initial the base GraphQL classes:
 php artisan pepper:grind --all
 ```
 
-Add `pepper` middleware to the GraphQL config file.
+Add `pepper` middleware to the GraphQL config (`config/graphql.php`, would be present after running above command) file.
+
+```php
+...
+
+    // Any middleware for the graphql route group
+    'middleware' => ['pepper'],
+    
+...
+```
 
 Out of the box, any models selected would be available at the GraphQL endpoint.
 However, you should make sure that you have defined the return type of your relations in your models in order to make the relations work on the fly.
