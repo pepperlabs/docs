@@ -56,3 +56,4 @@ If you discover a security vulnerability within Pepper, please send an e-mail to
 ## License
 
 The Pepper is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
